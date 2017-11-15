@@ -5,8 +5,6 @@
  * c -> D
  */
 
-package Graph;
-
 import java.util.*;
 
 /**
@@ -17,13 +15,15 @@ public class Graph {
 
     class Node {
         String label;
+        String description;
         Set<Node> vertices;
         Set<Node> parents;
 
-        public Node(String label) {
+        public Node(String label, String description) {
             this.label = label;
             this.vertices = new HashSet();
             this.parents = new HashSet();
+            this.description = description;
         }
 
         public void addVertex(Node vertex) {
@@ -81,22 +81,27 @@ public class Graph {
 
     public Graph() {}
 
-    public void addVertex(String label) {
+    public void addVertex(String label, String description) {
         if (vertexMap == null) {
             vertexMap = new HashMap<String, Node>(2);
         }
 
         if (!vertexMap.containsKey(label)) {
-            vertexMap.put(label, new Node(label));
+            vertexMap.put(label, new Node(label, description));
         }
     }
 
-    public void addDependency(String label, String dep) {
-        Node sourceVertex = findVertex(label);
-        Node destVertex = findVertex(dep);
+
+    public void addDependency(String parent, String child) {
+        Node sourceVertex = findVertex(parent);
+        Node destVertex = findVertex(child);
 
         if (sourceVertex != null && destVertex != null) {
             sourceVertex.addVertex(destVertex);
+        } else if (sourceVertex == null) {
+            throw new IllegalArgumentException("Parent vertex not found: " + parent);
+        } else {
+            throw new IllegalArgumentException("Child vertex not found: " + child);
         }
     }
 
