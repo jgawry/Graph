@@ -1,6 +1,9 @@
 /**
  * Created by Jakub on 2017-11-14.
  */
+
+package Graph;
+
 public class GraphRunner {
     public static void main(String[] args) {
         Graph graph = new Graph();
@@ -97,7 +100,7 @@ public class GraphRunner {
 
         System.out.println(graph.toString());
 
-        graph.DFS();
+        graph.BFS();
 
         System.out.println(graph.topologicalSort());
     }

@@ -5,6 +5,8 @@
  * c -> D
  */
 
+package Graph;
+
 import java.util.*;
 
 /**
@@ -127,7 +129,7 @@ public class Graph {
         return sb.toString();
     }
 
-    public void DFS() {
+    public void BFS() {
         if (vertexMap == null) {
             return;
         }

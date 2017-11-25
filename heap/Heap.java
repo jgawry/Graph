@@ -1,7 +1,5 @@
 package heap;
 
-import com.company.BST.BST;
-
 import java.util.ArrayList;
 
 /**
@@ -51,6 +49,61 @@ public class Heap {
             vertices.set(index, parentNode);
 
             maxHeapify(parentIndex);
+        }
+    }
+
+    public ArrayList<Node> heapSort() {
+        ArrayList<Node> sortedArray = new ArrayList<>(vertices.size());
+
+        while(vertices.size() > 0) {
+            sortedArray.add(vertices.remove(0));
+
+            if (vertices.size() > 0) {
+                vertices.add(0, vertices.remove(vertices.size() - 1));
+
+                heapify(0);
+            }
+        }
+
+
+        return sortedArray;
+    }
+
+    private void heapify(int index) {
+        int left = 2*index;
+        int right = 2*index + 1;
+
+        if (index >= 0 && index < vertices.size()) {
+            Node parentNode = vertices.get(index);
+
+            if (left < vertices.size()) {
+                Node leftNode = vertices.get(left);
+
+                if (leftNode.key > parentNode.key) {
+                    swap(left, index);
+
+                    heapify(left);
+                }
+
+                if (right < vertices.size()) {
+                    Node rightNode = vertices.get(right);
+
+                    if (rightNode.key > vertices.get(index).key) {
+                        swap(right, index);
+
+                        heapify(right);
+                    }
+                }
+            }
+        }
+    }
+
+    private void swap(int indexA, int indexB) {
+        if (indexA >= 0 && indexA < vertices.size() && indexB >= 0 && indexB < vertices.size()){
+            Node temp = vertices.get(indexA);
+
+            vertices.set(indexA, vertices.get(indexB));
+            vertices.set(indexB, temp);
         }
     }
 

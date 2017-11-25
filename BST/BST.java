@@ -1,4 +1,4 @@
-package com.company.BST;
+package BST;
 
 /**
  * Created by Jakub on 2017-11-12.
