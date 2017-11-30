@@ -51,4 +51,37 @@ public class BreakUpStringToSpaces {
 
         return false;
     }
+
+//    public int[] findSubarray(int[] arr, int k) {
+//        int begIndex = -1;
+//        int endIndex = -1;
+//
+//        for (int i = 0; i < n; i++) {
+//            int sum = 0;
+//            begIndex = i;
+//            endIndex = -1;
+//
+//            for (int j = i; j < n; j++) {
+//                sum += arr[j];
+//
+//                if (sum == k) {
+//                    endIndex = j;
+//                    break;
+//                }
+//            }
+//
+//            if (endIndex != -1) {
+//                int[] subArr = new int[j - i + 1];
+//
+//                for (int i = 0, int k = begIndex; k < endIndex; k++, i++) {
+//                    subArr[i] = arr[k];
+//
+//                }
+//
+//                return subArr;
+//            }
+//
+//        }
+//    }
+
 }
